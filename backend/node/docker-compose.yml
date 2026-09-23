@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  omnichat-node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - NODE_ENV=production
+      - PORT=8080
+      - DATABASE_URL=mysql://omni_user:omni_pass@db:3306/omnichat_db
+    depends_on:
+      - db
+
+  db:
+    image: mariadb:10.11
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: enterprise_root_password
+      MYSQL_DATABASE: omnichat_db
+      MYSQL_USER: omni_user
+      MYSQL_PASSWORD: omni_pass
+    volumes:
+      - omnichat_db_data:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    ports:
+      - "3306:3306"
+
+volumes:
+  omnichat_db_data:

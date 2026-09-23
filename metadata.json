@@ -1,0 +1,6 @@
+{
+  "name": "omni chat",
+  "description": "omni chat — پلتفرم چت آنلاین حرفه‌ای، مینیمال و سلف‌هاستد با پنل مدیریت مدرن، ردیابی زنده بازدیدکنندگان و استقلال کامل از سرور سازنده",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
